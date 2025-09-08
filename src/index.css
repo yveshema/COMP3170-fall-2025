@@ -116,25 +116,9 @@ input[type="search"] {
     background: #141414;
     color: #fff;
 
-    > div {
-      display: flex;
-      justify-content: space-between;
-
-      &:last-child {
-        justify-content: center;
-        padding-top: 2em;
-      }
-    }
-    
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    a {
-      color: #fff;
-      text-decoration: none;
-      font-size: .8em;
+    p {
+        text-align: center;
+        padding: 1em 0;
     }
   }
 
