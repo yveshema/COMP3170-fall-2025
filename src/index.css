@@ -17,7 +17,9 @@ body {
 
 button, 
 input[type="text"],
-input[type="search"] {
+input[type="search"],
+input[type="number"],
+input[type="password"] {
   appearance: none;
   background: transparent;
   border: none;
@@ -27,7 +29,9 @@ input[type="search"] {
 }
 
 input[type="text"],
-input[type="search"] {
+input[type="search"],
+input[type="number"],
+input[type="password"] {
   padding: 0.5em 1em;
   border: 1px solid;
 
@@ -44,6 +48,7 @@ input[type="search"] {
   background: #fff;
   min-height: 100%;
   justify-content: space-between;
+  position: relative;
 
   section#content {
     margin-top: 1.5rem;
@@ -52,6 +57,7 @@ input[type="search"] {
     gap: 1.5rem;
 
     header,
+    .actions,
     main {
       padding: 0 2em;
     }
@@ -77,31 +83,6 @@ input[type="search"] {
         padding: 0;
         margin: 0;
       }
-    
-      nav {
-        padding-top: .5em;
-
-        button {
-          text-transform: uppercase;
-          font-weight: bold;
-          letter-spacing: .1em;
-        
-          &:hover {
-            background-color: #141414;
-            color: #fff;
-          }
-        }
-
-        + form {
-          display: flex;
-          button {
-            background: #141414;
-            color: #fff;
-          }
-        }
-        
-      }
-
     }
 
     main {
@@ -116,9 +97,32 @@ input[type="search"] {
     background: #141414;
     color: #fff;
 
+    > div {
+      display: flex;
+      justify-content: space-between;
+
+      &:last-child {
+        justify-content: center;
+        padding-top: 2em;
+      }
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: .8em;
+    }
+
     p {
+        padding: 1em;
+        background: #000;
+        color: #fff;
         text-align: center;
-        padding: 1em 0;
     }
   }
 
@@ -303,4 +307,15 @@ button.icon-btn {
     background: chocolate;
     
   }
+}
+
+button.btn {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  text-transform: uppercase;
+}
+
+.primary {
+  background: #141414;
+  color: #fff;
 }

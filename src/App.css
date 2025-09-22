@@ -1,0 +1,93 @@
+.navigation {
+  nav {
+        padding-top: .5em;
+
+        button {
+          text-transform: uppercase;
+          font-weight: bold;
+          letter-spacing: .1em;
+        
+          &:hover {
+            background-color: #141414;
+            color: #fff;
+          }
+        }
+  }
+
+  > div > form {
+    display: flex;
+    button {
+      background: #141414;
+      color: #fff;
+    }
+  }
+
+  > div {
+    display: flex;
+    gap: 1em;
+  }
+}
+
+.login-btn {
+  text-transform: capitalize;
+  color: #141414;
+  cursor: pointer;
+
+  &:hover {
+    display: inline-block;
+    padding: 0.5em;
+    border-radius: 5px;
+    color: #fff;
+    background: #141414;
+  }
+}
+
+
+.form-container {
+  padding: 0 2em;
+
+  > form {
+    padding: 2em;
+
+    button {
+      margin-left: 10em;
+    }
+  }
+
+  .form-control {
+    label {
+      display: inline-block;
+      width: 10em;
+    }
+    margin: 1em 0;
+  }
+}
+
+.product-card {
+  display: flex;
+  padding: 1em 0;
+  padding: 1em 0;
+  border-bottom: 1px solid #ccc;
+
+  .product-card-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 1em;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  > div:last-child {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+}
+
+.container {
+  padding: 1em;
+}
