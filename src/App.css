@@ -91,3 +91,8 @@
 .container {
   padding: 1em;
 }
+
+dialog::backdrop {
+  background: rgb(0, 0, 0, .5);
+  backdrop-filter: blur(5px);
+}
