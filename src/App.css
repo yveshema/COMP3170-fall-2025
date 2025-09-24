@@ -1,0 +1,52 @@
+.app {
+  width: 60%;
+  min-height: 100vh;
+  padding: 1em 2em;
+  margin: 0 auto;
+}
+
+button {
+  display: inline-block;
+  padding: 1em 2em;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.orange-btn {
+  background: orange;
+  color: #fff;
+}
+
+.tile {
+  width: 6em;
+  height: 6em;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #eee;
+    cursor: pointer;
+    padding: 0 0.5em;
+  }
+
+}
+
+.container {
+  margin: 2em 0;
+  padding: 1em;
+  border: 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+dialog::backdrop {
+  background: rgb(0, 0, 0, .5);
+  backdrop-filter: blur(2px);
+}
