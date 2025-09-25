@@ -3,6 +3,8 @@ import AppHeader from "./components/AppHeader";
 import Main from "./components/Main";
 import Product from "./components/Product";
 
+import './App.css';
+
 const product1 = {
   name: "Running shoes",
   image: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Asics_Gel-Cumulus_22.jpg",

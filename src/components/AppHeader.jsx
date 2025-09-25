@@ -1,5 +1,7 @@
 import Navigation from "./Navigation";
 import Minicart from "./Minicart";
+import Modal from "./Modal";
+import ProductForm from "./ProductForm";
 
 function AppHeader() {
     return (
@@ -10,6 +12,13 @@ function AppHeader() {
             </div>
 
             <Navigation />
+
+            <div>
+                <Modal btnLabel="New" btnClassName="btn primary">
+                    <ProductForm />
+                </Modal>
+            </div>
+            
         </header>
     );
 }
