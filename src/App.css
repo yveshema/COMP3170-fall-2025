@@ -1,0 +1,52 @@
+.app {
+  width: 60%;
+  min-height: 100vh;
+  padding: 1em 2em 2em;
+  background: #f5f5f5;
+  margin: 0 auto;
+}
+
+button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+.btn-bg {
+  background: tomato;
+  color: #fff;
+  border-color: purple;
+}
+
+.container {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  padding: 2em;
+  margin: 1em 0;
+}
+
+.tile {
+  width: 6em;
+  height: 6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  > span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    padding: 0 0.5em;
+    background: #eee;
+    cursor: pointer;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(0, 0, 0, 0.5);
+}
