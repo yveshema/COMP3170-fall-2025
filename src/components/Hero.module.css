@@ -1,0 +1,22 @@
+.hero {
+    height: 100vh;
+    padding: 20%;
+
+    background: top left / cover no-repeat url(../assets/hero-image.jpg);
+
+    /*Image overlay*/
+    box-shadow: inset 0 0 0 2000px rgb(21, 45, 90, 0.5);
+
+    vertical-align: center;
+    align-content: center;
+    text-align: center;
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+}
