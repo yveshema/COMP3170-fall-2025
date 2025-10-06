@@ -24,3 +24,7 @@
         margin: 0 1em;
     }
 }
+
+.player {
+    border-bottom: 1px solid #aaa;
+}

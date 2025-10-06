@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import './App.css';
 
+import TopPlayers from './TopPlayers';
+
 function App() {
   const [show, setShow] = useState(true);
 
@@ -17,6 +19,8 @@ function App() {
         <Greeting />
         {/* {show && <Counter />} */}
         <Counter visible={show} />
+
+        <TopPlayers />
       </div>
 
     </div>
