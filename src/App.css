@@ -2,6 +2,12 @@
     h1 {
         text-align: center;
     }
+
+    > button {
+        margin-left: 2em;
+        padding: 1em;
+        border-radius: 5px;
+    }
 }
 
 .examples {
@@ -22,4 +28,15 @@
     button, span {
         margin: 0 1em;
     }
+}
+
+form {
+    label {
+        margin-right: 1em;
+    }
+}
+
+.player {
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
 }

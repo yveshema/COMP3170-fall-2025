@@ -6,15 +6,22 @@ import TopPlayers from './TopPlayers';
 
 function App() {
 
+  const [show, setShow] = useState(true);
+
   console.log('Parent re-rendering');
 
   return (
     <div className="app">
       <h1>React state management examples</h1>
+
+      <button onClick={() => setShow(!show)}>
+        {show ? 'Hide' : 'Show'} counter
+      </button>
       
       <div className="examples">
         <Greeting />
-        <Counter />
+        {/* { show && <Counter />} */}
+        <Counter isVisible={show} />
         <TopPlayers />
       </div>
 
@@ -22,7 +29,7 @@ function App() {
   )
 }
 
-function Counter() {
+function Counter({ isVisible }) {
   // const state = useState(0);
   // const count = state[0];
   // const setCount = state[1];
@@ -42,6 +49,8 @@ function Counter() {
   }
 
   console.log('Counter Re-rendering');
+
+  if (!isVisible) return null;
 
   return (
     <div className="counter">
