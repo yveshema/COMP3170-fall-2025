@@ -12,6 +12,20 @@ function TopPlayers() {
         setPlayers([...players, player]);
     }
 
+    function deletePlayer(id) {
+        // const newList = [];
+
+        // for (let player of players) {
+        //     if (player.id === id) continue; // skip it
+        //     newList.push(player);
+        // }
+
+        const newList = players.filter(player => player.id !== id);
+
+        setPlayers(newList);
+    }
+
+
     return (
         <div>
             <h2>Top Ballon d'Or Winners</h2>
@@ -20,6 +34,7 @@ function TopPlayers() {
                 <div key={player.id} className="player">
                     <p>Player name: {player.name}</p>
                     <p>Awards: {player.awards}</p>
+                    <button onClick={() => deletePlayer(player.id)}>Delete</button>
                 </div>
             ))}
 
