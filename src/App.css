@@ -1,0 +1,25 @@
+.app {
+    h1 {
+        text-align: center;
+    }
+}
+
+.examples {
+    padding: 2em;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+
+    > div {
+        width: 40%;
+        padding: 2em;
+        background: #eee;
+        border-radius: 10px;
+    }
+}
+
+.counter {
+    button, span {
+        margin: 0 1em;
+    }
+}
