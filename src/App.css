@@ -1,0 +1,13 @@
+body {
+    margin-top: 3.5rem;
+}
+
+.hero {
+    background: top left / cover no-repeat url(./assets/hero-image.jpg);
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    font-style: italic;
+}
