@@ -3,7 +3,7 @@ import Minicart from "./Minicart";
 import Modal from "./Modal";
 import ProductForm from "./ProductForm";
 
-function AppHeader() {
+function AppHeader({ add }) {
     return (
         <header>
             <div>
@@ -15,7 +15,7 @@ function AppHeader() {
 
             <div>
                 <Modal btnLabel="New" btnClassName="btn primary">
-                    <ProductForm />
+                    <ProductForm add={add} />
                 </Modal>
             </div>
         </header>
