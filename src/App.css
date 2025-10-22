@@ -96,3 +96,19 @@ dialog::backdrop {
   background: rgb(0, 0, 0, .5);
   backdrop-filter: blur(5px);
 }
+
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+
+  select {
+    padding: 0.5rem;
+    min-width: 12rem;
+  }
+}
+
+.filter {
+  display: flex;
+  gap: 2rem;
+}

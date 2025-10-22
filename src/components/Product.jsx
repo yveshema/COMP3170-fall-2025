@@ -1,12 +1,21 @@
-export default function Product({ image, name, price }) {
+import Modal from "./Modal";
+import ProductForm from "./ProductForm";
+
+export default function Product({ update, remove, product }) {
     return (
         <div className="product">
-            <img src={image} alt={name} />
+            <img src={product.image} alt={product.name} />
 
             <p>
-                <span className="pr-name">{name}</span>
-                <span className="pr-price">${price}</span>
+                <span className="pr-name">{product.name}</span>
+                <span className="pr-price">${product.price}</span>
             </p>
+            <div>
+                <Modal btnLabel="edit" btnClassName="btn primary">
+                    <ProductForm add={update} product={product} />
+                </Modal>
+                <button onClick={() => remove(product.id)}>Delete</button>
+            </div>
         </div>
     );
 }
