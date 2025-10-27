@@ -1,3 +1,5 @@
+import '../styles/forms.css';
+
 function LoginForm() {
     return (
         <div className="form-container">

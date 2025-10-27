@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
 
+import '../styles/forms.css';
+
 function ProductForm({ product, add }) {
 
     function handleSubmit(e) {

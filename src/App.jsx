@@ -49,9 +49,6 @@ const initialData = [
   },
 ];
 
-function renderProduct(product, index) {
-  return <Product {...product} key={index} />;
-}
 
 function App() {
   const [products, setProducts] = useState(() => {

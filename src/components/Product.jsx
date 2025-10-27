@@ -1,6 +1,9 @@
 import Modal from "./Modal";
 import ProductForm from "./ProductForm";
 
+import '../styles/product.css';
+import '../styles/buttons.css';
+
 export default function Product({ product, remove, update }) {
     return (
         <div className="product">
