@@ -1,0 +1,23 @@
+footer {
+  margin-top: 10rem;
+  padding: 0 2em 4rem;
+  background: #141414;
+  color: #fff;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: .8em;
+  }
+
+  p {
+      padding: 1em;
+      color: #fff;
+      text-align: center;
+  }
+}

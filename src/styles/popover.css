@@ -1,0 +1,61 @@
+[popover] {
+    border: none;
+}
+
+.popover-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ccc;
+    padding: 1rem 2rem;
+
+    button {
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    h3 {
+        font-size: 2rem;
+        text-align: center;
+        text-transform: capitalize;
+        flex: 1;
+        margin: 0;
+    }
+}
+
+.popover-content {
+    padding: 1rem 2rem;
+}
+
+.popover {
+    transition: transform 0.5s ease-out;
+
+    &::backdrop {
+        transition: background 0.5s ease-out;
+    }
+}
+
+.popover:popover-open {
+    position: fixed;
+    width: 500px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -3px 0 4px 0 rgb(0, 0, 0, 0.2);
+    inset: unset;
+    top: 0;
+    right: 0;
+    transform: translateX(0);
+
+    &::backdrop {
+        background: rgb(0, 0, 0, 0.1);
+    }
+}
+
+@starting-style {
+    .popover:popover-open {
+        transform: translateX(100%);
+    }
+
+    .popover:popover-open::backdrop {
+        background: rgb(0, 0, 0, 0%);
+    }
+}

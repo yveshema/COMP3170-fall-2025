@@ -1,0 +1,46 @@
+.navigation {
+  nav {
+        padding-top: .5em;
+        position: relative;
+
+        button + button {
+          margin-left: 1.2rem;
+        }
+
+        button {
+          text-transform: uppercase;
+          font-weight: bold;
+          letter-spacing: .1em;
+          position: relative;
+          cursor: pointer;
+          color: #555;
+
+          &:hover {
+            border-bottom: 2px solid #555;
+          }
+        }
+  }
+
+  > div > form {
+    display: flex;
+    button {
+      background: #141414;
+      color: #fff;
+    }
+  }
+
+  > div {
+    display: flex;
+    gap: 1em;
+  }
+}
+
+.sticky-nav {
+  width: 100% !important;
+  background: #f5f5f5;
+  padding: 1rem 10% 2rem;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.5);
+  transition: position 1s ease-in;
+}
