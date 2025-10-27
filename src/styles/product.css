@@ -1,0 +1,159 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 20rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  padding-right: 3rem;
+  position: relative;
+
+  &:hover {
+    box-shadow: 2px 4px 4px 0 rgb(0, 0, 0, 0.2), 0 -2px 4px rgb(0, 0, 0, 0.2);
+    
+    img {
+      transform: scale(.95);
+    }
+
+    .action-tray {
+      visibility: visible;
+      transform: translateX(10px);
+    }
+  }
+  
+  
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1.2;
+    object-fit: cover;
+    margin: 0 0 1rem;
+    transition: transform 0.3s ease-out;
+  }
+
+  span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0.5rem 0;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  span.pr-name {
+    font-size: 1.2rem;
+    font-kerning: normal;
+    text-transform: capitalize;
+  }
+
+  span.pr-price {
+    color: #000;
+    font-size: 1.2rem;
+  }
+  
+}
+
+.action-tray {
+  position: absolute;
+  left: 17rem;
+  padding: 0.5rem;
+  background: #eee;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  visibility: hidden;
+
+  box-shadow: -2px 0 4px 0 rgb(0, 0, 0, 0.5);
+
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  transition: transform 0.3s ease-out;
+
+  button + button {
+    margin-top: 0.5rem;
+  }
+
+  i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      transform: scale(1.2);
+      color: lightseagreen;
+      cursor: pointer;
+    }
+  }
+}
+
+.product-details {
+  width: 100%;
+
+  > header {
+    width: 100%;
+    display: flex;
+    margin: 1rem 0 2rem;
+    padding: 0 2px;
+    justify-content: space-between;
+
+    button  {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+  }
+}
+
+.product-desc {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > div {
+    max-width: 45%;
+    min-width: 20rem;
+  }
+
+  > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+}
+
+.related-products {
+  margin: 4rem 0 1rem 0;
+  
+  > div {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}

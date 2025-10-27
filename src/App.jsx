@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 import ProductForm from './components/ProductForm';
 
 import './App.css';
+import './styles/menubar.css';
 
 const sampleProducts = [
   {

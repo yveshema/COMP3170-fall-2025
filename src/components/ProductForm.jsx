@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
 
+import '../styles/forms.css';
+
 function ProductForm({ add, product }) {
     
     const placeholder = 'https://placehold.co/400x500?text=Product';

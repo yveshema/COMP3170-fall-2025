@@ -1,6 +1,8 @@
 import LoginForm from "./LoginForm";
 import Modal from "./Modal";
 
+import '../styles/navigation.css';
+
 function Navigation() {
     return (
         <div className="navigation">

@@ -1,3 +1,5 @@
+import '../styles/buttons.css';
+
 function Minicart({ likes, cartitems }) {
     return (
         <div>
