@@ -10,21 +10,20 @@ import ProductDetails from './components/ProductDetails';
 
 import './App.css';
 import './styles/menubar.css';
+import './styles/popover.css';
 
 import { sampleProducts } from './fixtures/products';
 
+function initData() {
+  const storedData = localStorage.getItem('products');
+
+  if (storedData) return JSON.parse(storedData);
+  else return {};
+}
+
 function App() {
 
-  const [products, setProducts] = useState(() => {
-    const storedData = localStorage.getItem('products');
-
-    if (storedData) return JSON.parse(storedData);
-    else return sampleProducts;
-  });
-
-  useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(products));
-  }, [products]);
+  const [products, setProducts] = useState(initData().products || sampleProducts);
 
   function addProduct(product) {
     // setProducts([...products, product]);
@@ -59,6 +58,18 @@ function App() {
     return products.filter(p => p.category === product.category && p.id !== product.id);
   }
 
+  const [cart, setCart] = useState(initData().cart || {});
+
+  const addToCart = (product) => {
+    setCart({ ...cart, [product.id]: { product, count: 1 } });
+  }
+
+  const cartSize = Object.keys(cart).length;
+
+  useEffect(() => {
+    localStorage.setItem('products', JSON.stringify({ products, cart }));
+  }, [products, cart]);
+
   return (
     <div className="app">
       <AppHeader>
@@ -66,9 +77,24 @@ function App() {
           <button className="icon-btn">
               <i className="bx bx-heart"></i>
           </button>
-          <button className="icon-btn">
-              <i className="bx bx-shopping-bag"></i>
+          <button className="icon-btn" popoverTarget='cart' popoverTargetAction='show'>
+            <i className="bx bx-shopping-bag"></i>
+            {cartSize > 0 && <span className="badge">{cartSize}</span>}
           </button>
+
+          <div id="cart" popover="auto" className="popover">
+            <div className="popover-header">
+              <h2>Your Shopping Cart</h2>
+              <button popoverTarget='cart' popoverTargetAction='hide'>
+                &#x2715;
+              </button>
+            </div>
+            <div>
+              {Object.values(cart).map(item => (
+                <p>{item.product.name}: {item.count}</p>
+              ))}
+            </div>
+          </div>
         </div>
       </AppHeader>
 
@@ -83,7 +109,7 @@ function App() {
             <>
               <div className="menubar">
                 <div>
-                  <Modal btnLabel="New" btnClassName="btn primary">
+                  <Modal type='create'>
                       <ProductForm add={addProduct} />
                   </Modal>
                 </div>
@@ -108,6 +134,7 @@ function App() {
                     remove={deleteProduct}
                     update={updateProduct}
                     select={() => setSelected(product)}
+                    addToCart={addToCart}
                   />
                 ))}
               </Main>

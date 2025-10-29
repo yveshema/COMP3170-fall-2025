@@ -14,7 +14,7 @@ function Navigation() {
             </nav>
 
             <div>
-                <Modal btnLabel="Login" btnClassName="login-btn">
+                <Modal type="Sign in">
                     <LoginForm />
                 </Modal>
                 <form>
