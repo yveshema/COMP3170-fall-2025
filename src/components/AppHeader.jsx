@@ -3,12 +3,12 @@ import Minicart from "./Minicart";
 
 import '../styles/header.css';
 
-function AppHeader() {
+function AppHeader({ children }) {
     return (
         <header className="app-header">
             <div>
                 <h1>ShopMart</h1>
-                <Minicart likes={5} cartitems={0} />
+                {children}
             </div>
 
             <Navigation />

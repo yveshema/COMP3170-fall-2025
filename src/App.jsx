@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { nanoid } from 'nanoid';
 
 import Footer from "./components/Footer";
 import AppHeader from "./components/AppHeader";
@@ -7,58 +6,12 @@ import Main from "./components/Main";
 import Product from "./components/Product";
 import Modal from './components/Modal';
 import ProductForm from './components/ProductForm';
+import ProductDetails from './components/ProductDetails';
 
 import './App.css';
 import './styles/menubar.css';
 
-const sampleProducts = [
-  {
-    name: "Running shoes",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Asics_Gel-Cumulus_22.jpg",
-    price: "24",
-    category: 'shoes',
-    id: nanoid(),
-  },
-  {
-    name: "Sport Jacket",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Polo_Ralph_Lauren_-_Sport_Coat.jpg",
-    price: "109.99",
-    category: 'jackets',
-    id: nanoid(),
-  },
-  {
-    name: "Running shoes",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Asics_Gel-Cumulus_22.jpg",
-    price: "24",
-    category: 'shoes',
-    id: nanoid(),
-  },
-  {
-    name: "Sport Jacket",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Polo_Ralph_Lauren_-_Sport_Coat.jpg",
-    price: "109.99",
-    category: 'jackets',
-    id: nanoid(),
-  },
-  {
-    name: "Running shoes",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Asics_Gel-Cumulus_22.jpg",
-    price: "24",
-    category: 'shoes',
-    id: nanoid(),
-  },
-  {
-    name: "Sport Jacket",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Polo_Ralph_Lauren_-_Sport_Coat.jpg",
-    price: "109.99",
-    category: 'jackets',
-    id: nanoid(),
-  },
-];
-
-function renderProduct(product, index) {
-  return <Product {...product} key={index} />;
-}
+import { sampleProducts } from './fixtures/products';
 
 function App() {
 
@@ -99,43 +52,67 @@ function App() {
   const displayedProducts = filter === '' ?
     products
     : products.filter(product => product.category === filter);
+  
+  const [selected, setSelected] = useState(null); // either null or a product
 
+  const getRelated = (product) => {
+    return products.filter(p => p.category === product.category && p.id !== product.id);
+  }
 
   return (
     <div className="app">
-      <section id="content">
-        <AppHeader />
-
-        <div className="menubar">
-          <div>
-            <Modal btnLabel="New" btnClassName="btn primary">
-                <ProductForm add={addProduct} />
-            </Modal>
-          </div>
-
-          <div className="filter">
-            <p>Filter:</p> 
-            <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-              <option value="">All Categories</option>
-              {[...categories].map((category, index) => (
-                <option key={index} value={category}>{category}</option>
-              ))}
-            </select>
-          </div>
-          
+      <AppHeader>
+        <div>
+          <button className="icon-btn">
+              <i className="bx bx-heart"></i>
+          </button>
+          <button className="icon-btn">
+              <i className="bx bx-shopping-bag"></i>
+          </button>
         </div>
+      </AppHeader>
 
-        <Main>
-          {displayedProducts.map(product => (
-            <Product
-              key={product.id}
-              product={product}
-              remove={deleteProduct}
-              update={updateProduct}
-            />
-          ))}
-        </Main>
+      <section id="content">
+        {selected ? (
+          <ProductDetails
+            product={selected}
+            related={getRelated(selected)}
+            dismiss={() => setSelected(null)} />
+        )
+          : (
+            <>
+              <div className="menubar">
+                <div>
+                  <Modal btnLabel="New" btnClassName="btn primary">
+                      <ProductForm add={addProduct} />
+                  </Modal>
+                </div>
 
+                <div className="filter">
+                  <p>Filter:</p> 
+                  <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+                    <option value="">All Categories</option>
+                    {[...categories].map((category, index) => (
+                      <option key={index} value={category}>{category}</option>
+                    ))}
+                  </select>
+                </div>
+                
+              </div>
+
+              <Main>
+                {displayedProducts.map(product => (
+                  <Product
+                    key={product.id}
+                    product={product}
+                    remove={deleteProduct}
+                    update={updateProduct}
+                    select={() => setSelected(product)}
+                  />
+                ))}
+              </Main>
+            </>
+        )}
       </section>
       <Footer />
     </div>
