@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import SolarSystem from './SolarSystem';
+import Posts from './Posts';
 
 function App() {
   return (
@@ -9,9 +10,11 @@ function App() {
 
         <SolarSystem />
 
-        <ErrorBoundary fallback={<p>Something went wrong!</p>}>
+        <Posts />
+
+        {/* <ErrorBoundary fallback={<p>Something went wrong!</p>}>
           <Greeting />
-        </ErrorBoundary>
+        </ErrorBoundary> */}
       </div>
     </>
   );
