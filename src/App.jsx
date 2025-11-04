@@ -7,19 +7,40 @@ import Modal from './components/Modal';
 import ProductForm from './components/ProductForm';
 import Menubar from './components/Menubar';
 import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
 
 import './App.css';
 import './styles/popover.css';
 
-import { sampleProducts } from './fixtures/products.js';
-
 function App() {
-  const [products, setProducts] = useState(() => {
-    const storedProducts = localStorage.getItem('products');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    if (storedProducts) return JSON.parse(storedProducts);
-    else return sampleProducts;
-  });
+  useEffect(() => {
+    const url = 'https://my-json-server.typicode.com/yveshema/comp3170-inventory/products';
+
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const resp = await fetch(url);
+
+        if (!resp.ok) throw new Error(resp.status);
+
+        const data = await resp.json();
+        setProducts(data);
+
+      } catch (e) {
+        setError(e.message);
+        console.error(e.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('products', JSON.stringify(products));
@@ -78,7 +99,7 @@ function App() {
 
           <div id="cart" popover="auto" className="popover">
             <h2>Your shopping cart</h2>
-            {Object.values(cart).map(item => <p>{item.product.name}</p>)}
+            <Cart cart={cart} />
           </div>
 
         </div>
@@ -111,17 +132,24 @@ function App() {
               </div>
             </Menubar>
 
-            <Main>
-              {displayedProducts.map(product => (
-                <Product 
-                  key={product.id}
-                  product={product}
-                  remove={deleteProduct}
-                  update={updateProduct}
-                  select={() => setSelected(product)}
-                  addToCart={() => addToCart(product)}
-                />
-              ))}
+              <Main>
+                {error ? <p>{error}</p>
+                  : loading ? <p>Loading...</p>
+                    : <>
+
+                      {displayedProducts.map(product => (
+                        <Product 
+                          key={product.id}
+                          product={product}
+                          remove={deleteProduct}
+                          update={updateProduct}
+                          select={() => setSelected(product)}
+                          addToCart={() => addToCart(product)}
+                        />
+                      ))}
+                    </>
+                }
+              
             </Main>
           </>
       )}
