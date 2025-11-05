@@ -7,6 +7,7 @@ import Product from "./components/Product";
 import Modal from './components/Modal';
 import ProductForm from './components/ProductForm';
 import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
 
 import './App.css';
 import './styles/menubar.css';
@@ -23,7 +24,34 @@ function initData() {
 
 function App() {
 
-  const [products, setProducts] = useState(initData().products || sampleProducts);
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // fetch data from api
+    const url = 'https://my-json-server.typicode.com/yveshema/comp3170-inventory/products';
+
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const resp = await fetch(url);
+
+        if (!resp.ok) throw new Error(`Network failure. Status: ${resp.status}`);
+        
+        const data = await resp.json();
+        setProducts(data);
+
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+
+  }, []);
 
   function addProduct(product) {
     // setProducts([...products, product]);
@@ -89,11 +117,7 @@ function App() {
                 &#x2715;
               </button>
             </div>
-            <div>
-              {Object.values(cart).map(item => (
-                <p>{item.product.name}: {item.count}</p>
-              ))}
-            </div>
+            <Cart cart={cart} />
           </div>
         </div>
       </AppHeader>
@@ -127,16 +151,22 @@ function App() {
               </div>
 
               <Main>
-                {displayedProducts.map(product => (
-                  <Product
-                    key={product.id}
-                    product={product}
-                    remove={deleteProduct}
-                    update={updateProduct}
-                    select={() => setSelected(product)}
-                    addToCart={addToCart}
-                  />
-                ))}
+                {loading ? <p>Loading...</p>
+                  : error ? <p>{error}</p>
+                    : <>
+                        {displayedProducts.map(product => (
+                          <Product
+                            key={product.id}
+                            product={product}
+                            remove={deleteProduct}
+                            update={updateProduct}
+                            select={() => setSelected(product)}
+                            addToCart={addToCart}
+                          />
+                        ))}
+                    </>
+                }
+                
               </Main>
             </>
         )}
