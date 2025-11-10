@@ -1,12 +1,24 @@
-# React + Vite
+# Testing in React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This branch provides examples of two approaches to testing your React applications:
 
-Currently, two official plugins are available:
+- Using React Testing Library
+- Using Storybook
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React Testing Library allows you to test your component code as well as any other code your component depend on.
 
-## Expanding the ESLint configuration
+Storybook allows you to visually test your components in isolation by creating stories for each components. Each story represent a different variant/state that your component can assume.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Key concepts:
+
+- **Test runner**: a utility that you use to run your tests (jest, vitest, chai, ...)
+- **Test suite**: a collection of tests for related functionality
+- **Test case**: a single test, often part of a test suite. **Storybook** stories can be considered as test cases.
+- **Mocks**: objects created for the purposes of mimicking the behaviors of some API or data objects used in your application.
+
+## References
+
+[https://testing-library.com/docs/react-testing-library/intro](https://testing-library.com/docs/react-testing-library/intro)
+[https://storybook.js.org/docs](https://storybook.js.org/docs)
+[Mocking with vitest](https://vitest.dev/guide/mocking)
+[Mock Service Worker (MSW)](https://mswjs.io/docs/quick-start)
