@@ -18,7 +18,7 @@ Storybook allows you to visually test your components in isolation by creating s
 
 ## References
 
-[https://testing-library.com/docs/react-testing-library/intro](https://testing-library.com/docs/react-testing-library/intro)
-[https://storybook.js.org/docs](https://storybook.js.org/docs)
-[Mocking with vitest](https://vitest.dev/guide/mocking)
-[Mock Service Worker (MSW)](https://mswjs.io/docs/quick-start)
+- [https://testing-library.com/docs/react-testing-library/intro](https://testing-library.com/docs/react-testing-library/intro)
+- [https://storybook.js.org/docs](https://storybook.js.org/docs)
+- [Mocking with vitest](https://vitest.dev/guide/mocking)
+- [Mock Service Worker (MSW)](https://mswjs.io/docs/quick-start)
