@@ -1,0 +1,21 @@
+.app {
+  width: 60%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+nav {
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.4rem;
+  }
+
+  a + a {
+    margin-left: 1rem;
+  }
+
+  a.active {
+    color: tomato;
+  }
+}
