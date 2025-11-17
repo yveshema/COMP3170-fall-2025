@@ -1,3 +1,15 @@
+.cart {
+    > div:first-child {
+        max-height: 60vh;
+        overflow-y: auto;
+        scrollbar-color: #888 #f1f1f1;
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar-button {
+            display: none;
+        }
+    }
+}
 .cart-item {
     padding: 1rem;
     border-bottom: 1px solid rgb(0, 0, 0, 0.2);
@@ -38,10 +50,10 @@
 }
 
 .cart-footer {
-    margin: 2rem 0 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    padding: 2rem 0 1rem;
 
     > div {
         display: flex;
@@ -76,3 +88,4 @@
         }
     }
 }
+

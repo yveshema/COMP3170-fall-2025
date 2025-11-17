@@ -157,3 +157,9 @@
     flex-wrap: wrap;
   }
 }
+
+.product-listing {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
