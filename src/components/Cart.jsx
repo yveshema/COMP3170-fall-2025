@@ -1,7 +1,15 @@
 import '../styles/cart.css';
 
-export default function Cart({ cart }) {
+function round(num) {
+  return num.toFixed(2);
+}
+
+export default function Cart({ cart, update, remove }) {
   const cartItems = Object.values(cart); // cart item contains product and count
+
+  const subTotal = cartItems.reduce((acc, item) => acc + (item.product.price * item.count), 0);
+
+  const numItems = cartItems.reduce((acc, item) => acc + item.count, 0);
 
   return (
     <div className="cart">
@@ -15,22 +23,32 @@ export default function Cart({ cart }) {
           <div className="cart-item-details">
             <div>
               <h3>{item.product.name}</h3>
-              <button><i className="bx bx-trash"></i></button>
+              <button onClick={() => remove(item.product.id)}>
+                <i className="bx bx-trash"></i>
+              </button>
             </div>
 
             <div>
               <div className="spinner">
-                <span><i className="bx bx-minus"></i></span>
+                <span onClick={() => update(item.product, item.count - 1)}><i className="bx bx-minus"></i></span>
                 <span>{item.count}</span>
-                <span><i className="bx bx-plus"></i></span>
+                <span onClick={() => update(item.product, item.count + 1)}><i className="bx bx-plus"></i></span>
               </div>
 
-              <span>${item.product.price * item.count}</span>
+              <span>${round(item.product.price * item.count)}</span>
             </div>
           </div>
 
         </div>
       ))}
+
+      <div className="cart-footer">
+        <div>
+          <p>There are {numItems} items in the cart</p>
+          <span className="cart-sub-total">${ round(subTotal)}</span>
+        </div>
+        <button className="btn primary">Proceed to checkout</button>
+      </div>
     </div>
   )
 }

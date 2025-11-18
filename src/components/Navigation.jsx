@@ -1,16 +1,17 @@
 import LoginForm from "./LoginForm";
 import Modal from "./Modal";
 
+import { NavLink } from 'react-router';
+
 import '../styles/navigation.css';
 
 function Navigation() {
     return (
         <div className="navigation">
             <nav>
-                <button>Home</button>
-                <button>Catalog</button>
-                <button>Wishlist</button>
-                <button>About</button>
+                <NavLink to="">Home</NavLink>
+                <NavLink to="catalog">Catalog</NavLink>
+                <NavLink to="about">About</NavLink>
             </nav>
 
             <div>
