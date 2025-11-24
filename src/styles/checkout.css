@@ -16,20 +16,33 @@
   }
 }
 
-.cart-summary {
-    background: #2f56d2;
+.order-summary {
     border-radius: 5px;
     padding: 0 0 0 1rem;
 
-    > div {
+    > div:first-child {
+      h2 {
+        margin-top: 0;
+      }
+
+      p {
+        display: flex;
+        justify-content: space-between;
+
+        &:last-child {
+          font-weight: bold;
+        }
+      }
+
+      border-bottom: 2px solid #999;
+      margin-bottom: 2rem;
+    }
+
+    > div:nth-child(2) {
         max-height: 60vh;
         overflow-y: auto;
         scrollbar-width: thin;
         scrollbar-color: #2f56d2 #f1f1f1;
-    }
-
-    * {
-        color: #fff;
     }
 
     img {
