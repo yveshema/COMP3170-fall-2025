@@ -11,11 +11,6 @@ import Catalog from './pages/Catalog';
 import Checkout from './pages/Checkout';
 import Success from './pages/Success';
 
-<<<<<<< HEAD
-const router = createBrowserRouter([
-  {
-    Component: App,
-=======
 import { fetchProducts } from './reducers/appReducer.js';
 
 const router = createBrowserRouter([
@@ -24,7 +19,6 @@ const router = createBrowserRouter([
     loader: async () => {
       return await fetchProducts();
     },
->>>>>>> D3-G/week13/demo
     children: [
       { index: true, Component: Home }, // url -> "/"
       { path: "about", Component: About }, // url -> "/about"

@@ -8,22 +8,14 @@ function ProductForm({ product, add }) {
         // e.preventDefault();
         const data = new FormData(e.target);
 
-<<<<<<< HEAD
-=======
         const placeholder = `https://placehold.co/400x500?text=${data.get('pr-name')}`;
 
->>>>>>> D3-G/week13/demo
         add({
             name: data.get('pr-name'),
             description: data.get('pr-desc'),
             category: data.get('pr-category'),
-<<<<<<< HEAD
-            image: data.get('pr-image'),
-            price: data.get('pr-price'),
-=======
             image: data.get('pr-image') || placeholder,
             price: data.get('pr-price') || 0,
->>>>>>> D3-G/week13/demo
             id: product?.id || nanoid(),
         });
 
@@ -54,11 +46,7 @@ function ProductForm({ product, add }) {
                     <label>Product price:</label>
                     <input name="pr-price" type="number" defaultValue={product?.price} />
                 </div>
-<<<<<<< HEAD
-                <button className="btn primary">Save</button>
-=======
                 <button className="btn primary" formMethod="dialog">Save</button>
->>>>>>> D3-G/week13/demo
             </form>
         </div>
     )

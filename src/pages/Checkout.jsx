@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-export default function Checkout() {
-  return <h1>Checkout Page</h1>;
-=======
 import { useOutletContext } from "react-router";
 
 import { CheckoutContext } from "../contexts/checkoutContext";
@@ -36,5 +32,4 @@ export default function Checkout() {
       </div>
     </>
   );
->>>>>>> D3-G/week13/demo
 }

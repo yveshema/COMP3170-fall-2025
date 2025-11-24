@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-export default function Catalog() {
-  return <h1>Catalog Page</h1>;
-=======
 import { useOutletContext } from "react-router";
 import Product from '../components/Product';
 
@@ -27,5 +23,4 @@ export default function Catalog() {
       ))}
     </div>
   );
->>>>>>> D3-G/week13/demo
 }
