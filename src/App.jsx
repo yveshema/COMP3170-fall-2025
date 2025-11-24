@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
+=======
+import { useReducer } from 'react';
+import { Outlet, useLoaderData } from 'react-router';
+>>>>>>> D3-G/week13/demo
 import Footer from "./components/Footer";
 import AppHeader from "./components/AppHeader";
 
 import Cart from './components/Cart';
 
+<<<<<<< HEAD
+=======
+import { appReducer, initializeData } from './reducers/appReducer';
+
+>>>>>>> D3-G/week13/demo
 import './App.css';
 import './styles/popover.css';
 
 function App() {
+<<<<<<< HEAD
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -101,6 +112,14 @@ function App() {
     loading,
     error,
   };
+=======
+
+  const data = useLoaderData();
+
+  const [state, dispatch] = useReducer(appReducer, data, initializeData);
+
+  const cartSize = Object.values(state.cart).length;
+>>>>>>> D3-G/week13/demo
 
   return (
     <div className="app">
@@ -116,14 +135,22 @@ function App() {
 
           <div id="cart" popover="auto" className="popover">
             <h2>Your shopping cart</h2>
+<<<<<<< HEAD
             <Cart cart={cart} update={updateCart} remove={removeFromCart} />
+=======
+            <Cart cart={state.cart} dispatch={dispatch} />
+>>>>>>> D3-G/week13/demo
           </div>
 
         </div>
       </AppHeader>
 
       <section id="content">
+<<<<<<< HEAD
         <Outlet context={appContext} />
+=======
+        <Outlet context={{ state, dispatch, loading: data.isLoading }} />
+>>>>>>> D3-G/week13/demo
       </section>
       <Footer />
     </div>

@@ -1,16 +1,44 @@
+<<<<<<< HEAD
+=======
+import { useNavigate } from 'react-router';
+
+>>>>>>> D3-G/week13/demo
 import '../styles/cart.css';
 
 function round(num) {
   return num.toFixed(2);
 }
 
+<<<<<<< HEAD
 export default function Cart({ cart, update, remove }) {
+=======
+export default function Cart({ cart, dispatch }) {
+>>>>>>> D3-G/week13/demo
   const cartItems = Object.values(cart); // cart item contains product and count
 
   const subTotal = cartItems.reduce((acc, item) => acc + (item.product.price * item.count), 0);
 
   const numItems = cartItems.reduce((acc, item) => acc + item.count, 0);
 
+<<<<<<< HEAD
+=======
+  function remove (id) {
+    dispatch({
+      type: 'deleted-cart-item',
+      payload: { id }
+    });
+  }
+
+  function update (product, count) {
+    dispatch({
+      type: 'updated-cart-item',
+      payload: { product, count }
+    });
+  }
+
+  const navigate = useNavigate();
+
+>>>>>>> D3-G/week13/demo
   return (
     <div className="cart">
       {cartItems.map(item => (
@@ -47,7 +75,18 @@ export default function Cart({ cart, update, remove }) {
           <p>There are {numItems} items in the cart</p>
           <span className="cart-sub-total">${ round(subTotal)}</span>
         </div>
+<<<<<<< HEAD
         <button className="btn primary">Proceed to checkout</button>
+=======
+        <button 
+          className="btn primary"
+          onClick={() => navigate('checkout')}
+          popoverTarget='cart'
+          popoverTargetAction='hide'
+        >
+          Proceed to checkout
+        </button>
+>>>>>>> D3-G/week13/demo
       </div>
     </div>
   )

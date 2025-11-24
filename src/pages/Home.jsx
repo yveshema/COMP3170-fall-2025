@@ -10,6 +10,7 @@ import ProductDetails from '../components/ProductDetails';
 
 export default function Home() {
   const {
+<<<<<<< HEAD
     products,
     categories,
     addProduct,
@@ -20,6 +21,15 @@ export default function Home() {
     addToCart,
   } = useOutletContext();
 
+=======
+    state: { products },
+    dispatch,
+    loading
+  } = useOutletContext();
+
+  const categories = new Set(products.map(p => p.category));
+
+>>>>>>> D3-G/week13/demo
   const [filter, setFilter] = useState('');
   
   const displayedProducts = filter === '' ?
@@ -46,7 +56,11 @@ export default function Home() {
           <>
             <Menubar>
               <Modal type="create">
+<<<<<<< HEAD
                 <ProductForm add={addProduct} />
+=======
+                <ProductForm add={(product) => dispatch({ type: 'added-product', payload: { product }}) } />
+>>>>>>> D3-G/week13/demo
               </Modal>
 
               <div style={{ padding: '0 2rem' }}>
@@ -61,18 +75,29 @@ export default function Home() {
             </Menubar>
 
               <Main>
+<<<<<<< HEAD
                 {error ? <p>{error}</p>
                   : loading ? <p>Loading...</p>
+=======
+                {loading ? <p>Loading...</p>
+>>>>>>> D3-G/week13/demo
                     : <>
 
                       {displayedProducts.map(product => (
                         <Product 
                           key={product.id}
                           product={product}
+<<<<<<< HEAD
                           remove={deleteProduct}
                           update={updateProduct}
                           select={() => setSelected(product)}
                           addToCart={() => addToCart(product)}
+=======
+                          remove={() => dispatch({ type: 'deleted-product', payload: { id: product.id }})}
+                          update={(p) => dispatch({ type: 'updated-product', payload: { product: p }})}
+                          select={() => setSelected(product)}
+                          addToCart={() => dispatch({ type: 'added-cart-item', payload: { product }})}
+>>>>>>> D3-G/week13/demo
                         />
                       ))}
                     </>
