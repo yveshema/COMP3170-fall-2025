@@ -1,0 +1,28 @@
+.menubar {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  z-index: 1;
+
+  span + select {
+    min-width: 12rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    margin-left: 1rem;
+  }
+}
+
+.sticky-menubar {
+  background: #fff;
+  position: fixed;
+  top: 5.2rem;
+  left: 0;
+  width: 100%;
+  padding: 1rem 10%;
+}
+
+.admin-tasks {
+    display: flex;
+    gap: 1rem;
+}
+

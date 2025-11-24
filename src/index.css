@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  color: inherit;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: #1b1b1b;
+}
+
+/* OVERRIDE DEFAULTS */
+button, 
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="password"] {
+  appearance: none;
+  background: transparent;
+  border: none;
+  font: inherit;
+  padding: 0;
+  width: auto;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="password"] {
+  padding: 0.5em 1em;
+  border: 1px solid;
+
+  &:focus {
+    outline: none;
+  }
+}
