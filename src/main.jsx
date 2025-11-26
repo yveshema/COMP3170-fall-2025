@@ -10,9 +10,14 @@ import About from './pages/About.jsx';
 import Checkout from './pages/Checkout.jsx';
 import Success from './pages/Success.jsx';
 
+import { fetchProducts } from './reducers/appReducer.js';
+
 const router = createBrowserRouter([
   {
     Component: App,
+    loader: async () => {
+      return fetchProducts();
+    },
     children: [
       { index: true, Component: Home }, // url -> "/"
       { path: "catalog", Component: Catalog }, // url -> "/catalog"

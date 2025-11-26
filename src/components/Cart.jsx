@@ -6,7 +6,7 @@ function round(num) {
   return num.toFixed(2);
 }
 
-export default function Cart({ cart, update, remove }) {
+export default function Cart({ cart, dispatch }) {
   const cartItems = Object.values(cart); // cart item contains product and count
 
   const numItems = cartItems.reduce((acc, item) => acc + item.count, 0);
@@ -14,6 +14,20 @@ export default function Cart({ cart, update, remove }) {
   const subTotal = cartItems.reduce((acc, item) => acc + (item.product.price * item.count), 0);
 
   const navigate = useNavigate();
+
+  function update(product, count) {
+    dispatch({
+      type: 'updated-cart-item',
+      payload: { product, count }
+    });
+  }
+
+  function remove(id) {
+    dispatch({
+      type: 'deleted-cart-item',
+      payload: { id }
+    });
+  }
 
   return (
     <div className="cart">

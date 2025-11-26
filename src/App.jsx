@@ -1,101 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
 import Footer from "./components/Footer";
 import AppHeader from "./components/AppHeader";
 
 import Cart from './components/Cart';
 
-import { Outlet } from 'react-router';
+import { Outlet, useLoaderData } from 'react-router';
+
+import { appReducer, initializeState } from './reducers/appReducer';
 
 import './App.css';
 import './styles/popover.css';
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const data = useLoaderData(); // get data from API
+
+  const [state, dispatch] = useReducer(appReducer, data, initializeState);
 
   useEffect(() => {
-    const url = 'https://my-json-server.typicode.com/yveshema/comp3170-inventory/products';
+    localStorage.setItem('shopmart', JSON.stringify(state));
+  }, [state]);
 
-    async function fetchData() {
-      setLoading(true);
-      try {
-        const resp = await fetch(url);
-
-        if (!resp.ok) throw new Error(resp.status);
-
-        const data = await resp.json();
-        setProducts(data);
-
-      } catch (e) {
-        setError(e.message);
-        console.error(e.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(products));
-  }, [products]);
-
-  function addProduct(product) {
-    setProducts([product, ...products ]);
-  }
-
-  function deleteProduct(id) {
-    const updatedProducts = products.filter(product => product.id !== id);
-    setProducts(updatedProducts);
-  }
-
-  function updateProduct(updatedProduct) {
-    const updatedProducts = products.map(product => {
-      if (product.id === updatedProduct.id) return updatedProduct; // replace old version of product
-      else return product;
-    });
-    setProducts(updatedProducts);
-  }
-
-  // Filtering logic
-  const [cart, setCart] = useState({});
-
-  function addToCart(product) {
-    setCart({ ...cart, [product.id]: { product, count: 1 } });
-  }
-
-  function updateCart(product, count) {
-    if (count < 1) {
-      removeFromCart(product.id);
-      return;
-    }
-    setCart({ ...cart, [product.id]: { product, count } });
-  }
-
-  function removeFromCart(id) {
-    delete cart[id];
-    setCart({ ...cart });
-  }
-
-  function clearCart() {
-    setCart({});
-  }
-
-  const cartSize = Object.keys(cart).length;
-
-  const appContext = {
-    products,
-    cart,
-    addProduct,
-    updateProduct,
-    deleteProduct,
-    addToCart,
-    loading,
-    error
-  };
+  const cartSize = Object.keys(state.cart).length;
 
   return (
     <div className="app">
@@ -117,9 +42,8 @@ function App() {
               </button>
             </div>
             <Cart
-              cart={cart}
-              update={updateCart}
-              remove={removeFromCart}
+              cart={state.cart}
+              dispatch={dispatch}
             />
           </div>
 
@@ -128,7 +52,7 @@ function App() {
 
       <section id="content">
         
-        <Outlet context={appContext} />
+        <Outlet context={{ state, dispatch, loading: data.isLoading }} />
         
 
       </section>

@@ -44,7 +44,7 @@ function ProductForm({ product, add }) {
                     <label>Product price:</label>
                     <input name="pr-price" type="number" defaultValue={product?.price} />
                 </div>
-                <button className="btn primary">Save</button>
+                <button className="btn primary" formMethod="dialog">Save</button>
             </form>
         </div>
     )

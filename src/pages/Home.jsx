@@ -11,14 +11,12 @@ import { useState } from 'react';
 export default function Home() {
 
   const {
-    products,
-    addProduct,
-    updateProduct,
-    deleteProduct,
-    addToCart,
-    loading,
-    error
+    state,
+    dispatch,
+    loading
   } = useOutletContext();
+
+  const { products } = state;
 
   const categories = new Set(products.map(product => product.category));
   const [filter, setFilter] = useState('');
@@ -47,7 +45,7 @@ export default function Home() {
         <>
           <Menubar>
             <Modal type="create">
-              <ProductForm add={addProduct} />
+              <ProductForm add={(product) => dispatch({ type: 'added-product', payload: { product }})} />
             </Modal>
 
             <div style={{ padding: '0 2rem' }}>
@@ -62,18 +60,17 @@ export default function Home() {
           </Menubar>
 
             <Main>
-              {error ? <p>{error}</p>
-                : loading ? <p>Loading...</p>
+              {loading ? <p>Loading...</p>
                   : <>
 
                     {displayedProducts.map(product => (
                       <Product 
                         key={product.id}
                         product={product}
-                        remove={deleteProduct}
-                        update={updateProduct}
+                        remove={() => dispatch({ type: 'deleted-product', payload: { id: product.id }})}
+                        update={(p) => dispatch({ type: 'updated-product', payload: { product: p }})}
                         select={() => setSelected(product)}
-                        addToCart={() => addToCart(product)}
+                        addToCart={() => dispatch({ type: 'added-cart-item', payload: { product }})}
                       />
                     ))}
                   </>

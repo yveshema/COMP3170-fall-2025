@@ -4,7 +4,9 @@ import Product from "../components/Product";
 
 export default function Catalog() {
   
-  const { products } = useOutletContext();
+  const { state } = useOutletContext();
+
+  const { products } = state;
 
   const categories = new Set(products.map(product => product.category));
 
@@ -15,7 +17,7 @@ export default function Catalog() {
           <h2 style={{ textTransform: 'capitalize'}}>{category}</h2>
           <div className="product-listing">
             {products.filter(p => p.category === category).map(product => (
-              <Product key={product.id} product={product} showTray={false} />
+              <Product key={product.id} product={product} showActionTray={false} />
             ))}
           </div>
           
