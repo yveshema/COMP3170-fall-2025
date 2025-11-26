@@ -44,21 +44,19 @@ export default function CheckoutForm() {
             <label>Card number</label>
             <input type="text" placeholder="0000 0000 0000 0000" />
           </p>
-        </div>
-        <div>
           <div>
-            <p>
+            <p className="expiration">
               <label>Expiration</label>
               <span>
                 <input type="text" maxLength="2" placeholder="MM" />
                 <input type="text" maxLength="4" placeholder="YYYY" />
               </span>
             </p>
+            <p>
+              <label>CVC/CVV</label>
+              <input type="text" maxLength="3" placeholder="CVC/CVV" />
+            </p>
           </div>
-          <p>
-            <label>CVC/CVV</label>
-            <input type="text" maxLength="3" placeholder="CVC/CVV" />
-          </p>
         </div>
       </section>
       <section>
