@@ -48,13 +48,13 @@ export default function CheckoutForm() {
             <p className="expiration">
               <label>Expiration</label>
               <span>
-                <input type="text" maxLength="2" placeholder="MM" />
-                <input type="text" maxLength="4" placeholder="YYYY" />
+                <input type="text" size="6" maxLength="2" placeholder="MM" />
+                <input type="text" size="6" maxLength="4" placeholder="YYYY" />
               </span>
             </p>
             <p>
               <label>CVC/CVV</label>
-              <input type="text" maxLength="3" placeholder="CVC/CVV" />
+              <input type="text" size="6" maxLength="3" placeholder="CVC/CVV" />
             </p>
           </div>
         </div>
